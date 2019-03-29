@@ -1,6 +1,5 @@
 <template>
   <div class="container">
-    content
     <GChart
       type="BarChart"
       :data="this.$store.getters.getGraphData"

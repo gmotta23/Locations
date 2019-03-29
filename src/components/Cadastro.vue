@@ -16,7 +16,7 @@
         class="address"
       >
       </vue-google-autocomplete>
-      <button class="btn" @click.prevent="addData(establishment, address)">Go!</button>
+      <button class="btn" @click.prevent="addData(establishment, address)">Adicionar!</button>
     </form>
 
   
@@ -60,7 +60,7 @@ export default {
         document.getElementById("map").value=''
         address = ''
       } else {
-        console.log('Endereço inválido')
+        alert('Endereço inválido')
       }
       this.$store.dispatch('refreshCounter')
     }
@@ -86,7 +86,23 @@ export default {
 }
 
 .btn {
-  
+  margin-top: 1rem;
+  color: #fff !important;
+  text-transform: uppercase;
+  background: #ed3330;
+  height: 2rem;
+  border-radius: 2rem;
+  display: inline-block;
+  border: none;
+  &:hover{
+    cursor: pointer;
+    background: #434343;
+    letter-spacing: 1px;
+    -webkit-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
+    -moz-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
+    box-shadow: 5px 40px -10px rgba(0,0,0,0.57);
+    transition: all 0.4s ease 0s;
+    }
 }
 
 </style>
