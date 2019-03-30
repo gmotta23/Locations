@@ -33,7 +33,7 @@ export default {
   data () {
     return {
       establishment: '',
-      address: ''
+      address: {}
     }
   },
   mounted() {
@@ -57,8 +57,8 @@ export default {
         await this.$store.dispatch('addData', data)
         this.establishment = ''
         //reseta o input
-        document.getElementById("map").value=''
-        address = ''
+        document.getElementById("map").value = ''
+        address = {}
       } else {
         alert('Endereço inválido')
       }
@@ -83,20 +83,31 @@ export default {
 .form-container {
   display: grid;
   width: 40rem;
+  input {
+    border-radius: 0.2rem;
+    border-width: 0.2rem;
+    border-style:groove;
+    color: gray;
+    &:hover{
+      border-width: 0.2rem;
+      border-color:rgb(151, 182, 229);
+      color: black;
+    }
+  }
 }
 
 .btn {
   margin-top: 1rem;
   color: #fff !important;
   text-transform: uppercase;
-  background: #ed3330;
+  background: blue;
   height: 2rem;
-  border-radius: 2rem;
+  border-radius: 0.2rem;
   display: inline-block;
   border: none;
   &:hover{
     cursor: pointer;
-    background: #434343;
+    background: rgba(12, 9, 51, 0.57);
     letter-spacing: 1px;
     -webkit-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
     -moz-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);

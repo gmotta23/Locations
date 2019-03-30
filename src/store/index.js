@@ -7,8 +7,9 @@ export default new Vuex.Store({
   state: {
     itemArray: JSON.parse(localStorage.getItem('itemsArray')),
     estados: [],
-    media: [],
-    graphData: []
+    media: 0,
+    graphData: [],
+    sum: 0
   },
   getters: {
     getData (state) {
@@ -22,6 +23,9 @@ export default new Vuex.Store({
     },
     getGraphData(state) {
       return state.graphData
+    },
+    getSum(state) {
+      return state.sum
     }
   },
   mutations: {
@@ -36,11 +40,18 @@ export default new Vuex.Store({
     },
     addGraphDataToState(state, graphData) {
       state.graphData = graphData
+    },
+    addSumToState(state, sum) {
+      state.sum = sum
     }
   },
   actions: {
     async addData({state, commit}, data) {
+
+      //Puxa o local storage
       let items = await JSON.parse(localStorage.getItem('itemsArray')) || [];
+
+      //Cria um objeto
       var newItem = {
         establishment: data.establishment,
         address: {
@@ -51,18 +62,25 @@ export default new Vuex.Store({
           cidade: data.address.locality
         }
       }
+
+      //Adiciona o objeto no array puxado
       items.push(newItem);
+      //Seta novamente o localStorage
       localStorage.setItem('itemsArray', JSON.stringify(items));
       commit('addDataToState', items)
     },
     async refreshCounter({state, commit, getters}) {
       let array = getters.getData
 
+      //Transforma o array de objetos da store em um array de estados
+
       let estadosArray = array.map(element => {
         return element.address.estado
       })
 
       let estados = estadosArray
+
+      //Conta estados que se repetem
 
       let counts = []
       estados.forEach(element => {
@@ -74,11 +92,14 @@ export default new Vuex.Store({
             //conta os iguais em posições diferentes
             if (estados.indexOf(element)!==i && estados[i]===element) {
               newCount.count++
+              //Anula estados já contados para evitar repetição
               estados[i]=''
             }
           }
           counts.push(newCount)
       })
+
+      //Filtra os elementos vazios, para ter apenas a contagem
 
       let filterEmpty = counts.filter(element => {
         return element.item.length>0
@@ -92,21 +113,20 @@ export default new Vuex.Store({
         sum += element.count
       })
 
+      commit('addSumToState', sum)
+
       let media = sum/getters.getEstados.length
       commit('addMediaToState', media)
 
-      //meta: ['PR', 15],['SP', 2]
-      console.log(filterEmpty)
+      //Apropria os dados para aparecerem no gráfico
 
-      let graphData = [['Estado','Número']]
+      let graphData = [['Estado','Quantidade']]
 
       filterEmpty.forEach(element => {
         let aux = [element.item, element.count]
-        console.log(aux)
         graphData.push(aux)
       })
 
-      console.log(graphData)
       commit('addGraphDataToState', graphData)
 
     }

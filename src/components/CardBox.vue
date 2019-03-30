@@ -1,8 +1,14 @@
 <template>
   <div class="cardBox">
     <div class="card" v-for="(item, index) in $store.getters.getData" :key="index">
-      Estabelecimento: {{item.establishment}}
-      <br>
+      Editar: {{index}}
+      <div v-if="!editing[index]" class="estabelecimento">Estabelecimento: {{item.establishment}}  
+        <button @click.prevent="enableEdit(index)">Editar</button>
+      </div>
+      <div v-if="editing[index]" class="estabelecimento"><input v-model="item.establishment"/>
+        <button @click.prevent="saveEdit(item.establishment, index)">Salvar</button>
+        <button @click.prevent="disableEdit()">Fechar</button>
+      </div>
       País: {{item.address.pais}}
       <br>
       Estado: {{item.address.estado}}
@@ -16,7 +22,23 @@
 export default {
   data () {
     return {
-      items: {}
+      items: {},
+      editing: []
+    }
+  },
+  methods: {
+    enableEdit (index) {
+      this.editing = []
+      this.editing[index] = true
+    },
+    disableEdit () {
+      this.editing = []
+    },
+    async saveEdit(newItem, index) {
+      let items = await JSON.parse(localStorage.getItem('itemsArray'))
+      items[index].establishment = newItem
+      localStorage.setItem('itemsArray', JSON.stringify(items));
+      this.editing = []
     }
   },
   async beforeCreate() {

@@ -1,7 +1,7 @@
 {
   "name": "proj_hitech",
   "version": "1.0.0",
-  "description": "A Vue.js project",
+  "description": "Projeto desafio proposto pela Hi Technologies",
   "author": "gustavo <gustavo.motta23@gmail.com>",
   "private": true,
   "scripts": {

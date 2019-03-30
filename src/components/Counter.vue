@@ -1,10 +1,15 @@
 <template>
   <div class="counter">
-    <div v-for="(item, index) in this.$store.getters.getEstados" :key="index">
-      {{item.item}}:{{item.count}}
+    <div class="media">
+      Média de estabelecimentos por estado: {{this.$store.getters.getMedia}}<br>
     </div>
-    Média de estabelecimentos por estado: {{this.$store.getters.getMedia}}<br>
-    <label>Meta:</label><input/>
+    <!-- <label>Meta:</label><input/> -->
+    <div class="total">Total de estabelecimentos: {{$store.getters.getSum}}</div>
+    <div class="contagens">
+      <div v-for="(item, index) in this.$store.getters.getEstados" :key="index">
+        {{item.item}}:{{item.count}}
+      </div>
+    </div>
   </div>
 </template>
 
@@ -25,7 +30,14 @@ export default {
 
 <style lang="scss" scoped>
 .counter {
-  display: grid;
-  //grid-auto-flow: column;
+  display: grid;  
+  .media {
+    font-size: 1.5rem;
+  }
+  .contagens {
+    display: grid;
+    grid-template-columns: 4rem 4rem 4rem 4rem;
+    grid-auto-flow: row;
+  }
 }
 </style>
