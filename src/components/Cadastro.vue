@@ -16,9 +16,8 @@
         class="address"
       >
       </vue-google-autocomplete>
-      <button class="btn" @click.prevent="addData(establishment, address)">Adicionar!</button>
+      <button class="btn" @click.prevent="addData(establishment, address)">Adicionar</button>
     </form>
-
   
   </div>
 </template>
@@ -73,7 +72,7 @@ export default {
 
 .cadastro {
   text-align: left;
-  padding: 1rem 0 1rem 3rem;
+  padding: 1rem 0 1rem 1rem;
 }
 
 .title {
@@ -82,12 +81,13 @@ export default {
 
 .form-container {
   display: grid;
-  width: 40rem;
+  width: 35rem;
   input {
     border-radius: 0.2rem;
     border-width: 0.2rem;
     border-style:groove;
-    color: gray;
+    height: 1rem;
+    color: black;
     &:hover{
       border-width: 0.2rem;
       border-color:rgb(151, 182, 229);
@@ -98,12 +98,11 @@ export default {
 
 .btn {
   margin-top: 1rem;
-  color: #fff !important;
+  color: #fff;
   text-transform: uppercase;
   background: blue;
   height: 2rem;
   border-radius: 0.2rem;
-  display: inline-block;
   border: none;
   &:hover{
     cursor: pointer;

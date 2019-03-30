@@ -2,7 +2,6 @@
   <div class="container">
     <div class="graphContainer" v-if="this.$store.getters.getGraphData.length>0">
     <GChart
-      class="graph"
       type="BarChart"
       :data="this.$store.getters.getGraphData"
       :options="chartOptions"
@@ -27,11 +26,8 @@ export default {
         title: 'Quantidade de estabelecimentos por estado',
         vAxis: {title: 'Estado'},
         hAxis: {title: 'Estabelecimentos'},
-        trendlines: {1: {}},
-        chart: {
-          title: 'Graph',
-          subtitle: 'Estabelecimentos',
-        }
+        height: 200,
+        width: 600
       }
     }
   }
@@ -42,11 +38,5 @@ export default {
 .container {
   margin-top: 1rem;
   width: auto;
-  .graphContainer {
-    background-color: blue;
-    .graph {
-      background-color: red;
-    }
-  }
 }
 </style>

@@ -80,7 +80,7 @@ export default new Vuex.Store({
 
       let estados = estadosArray
 
-      //Conta estados que se repetem
+      //Conta estados que se repetem, criando objetos referentes a cada estado e sua respectiva contagem
 
       let counts = []
       estados.forEach(element => {
@@ -99,8 +99,8 @@ export default new Vuex.Store({
           counts.push(newCount)
       })
 
-      //Filtra os elementos vazios, para ter apenas a contagem
-
+      //Filtra os elementos vazios
+      
       let filterEmpty = counts.filter(element => {
         return element.item.length>0
       })
@@ -120,7 +120,7 @@ export default new Vuex.Store({
 
       //Apropria os dados para aparecerem no gráfico
 
-      let graphData = [['Estado','Quantidade']]
+      let graphData = [['Estado','Estabelecimentos']]
 
       filterEmpty.forEach(element => {
         let aux = [element.item, element.count]
