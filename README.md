@@ -1,6 +1,5 @@
 # proj_hitech
 
-> Desafio Hi Technologies
 > Esse projeto em Vue.js consiste na criação de cards referentes a estabelecimentos e seus respectivos
 > endereços, além de mostrar graficamente a quantidade de estabelecimentos por estado.
 > O funcionamento básico do protótipo consiste em simplesmente adicionar o nome de um estabelecimento,
