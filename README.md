@@ -8,6 +8,8 @@
 > A medida que mais estabelecimentos são criados, a contagem deles é exibida, junto com a média
 > de estabelecimentos por estado e um gráfico que representa a quantidade de estabelecimentos por estado.
 
+>Important note: Google API key is not functional. You should insert a key from a Google account (Google's Places API) for the application to run properly.
+
 ## Build Setup
 
 ``` bash
