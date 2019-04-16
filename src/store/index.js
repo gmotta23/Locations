@@ -74,6 +74,10 @@ export default new Vuex.Store({
 
       //Transforma o array de objetos da store em um array de estados
 
+      if (!array) {
+        return 0
+      }
+
       let estadosArray = array.map(element => {
         return element.address.estado
       })
