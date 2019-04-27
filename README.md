@@ -1,4 +1,4 @@
-# locations app
+# Simple Locations Control App
 
 > This project consists on adding establishments and their respective locations and saving them on the browser's local storage. After doing that, the establishments are counted by location, processed and represented graphically.
 
